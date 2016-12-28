@@ -16,3 +16,11 @@ Function ConvertTo-TitleCase {
     (Get-Culture).TextInfo.ToTitleCase($Input.ToLower())
 }
 
+Function Select-StringBetween {
+    param (
+        [Parameter(Mandatory,ValueFromPipeline)]$String,
+        [Parameter(Mandatory)]$After,
+        [Parameter(Mandatory)]$Before
+    )
+    (($String -split $After)[1] -split $Before)[0]
+}
