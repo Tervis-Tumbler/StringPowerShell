@@ -22,5 +22,7 @@ Function Select-StringBetween {
         [Parameter(Mandatory)]$After,
         [Parameter(Mandatory)]$Before
     )
-    (($String -split $After)[1] -split $Before)[0]
+    process {
+        (($String -split $After)[1] -split $Before)[0]
+    }
 }
