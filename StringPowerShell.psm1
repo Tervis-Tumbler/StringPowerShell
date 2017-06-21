@@ -26,3 +26,10 @@ Function Select-StringBetween {
         (($String -split $After)[1] -split $Before)[0]
     }
 }
+
+function Convert-HereStringToValidateSet {
+    param (
+        [string]$HereString
+    )
+    '"' + (($HereString.split("`n") | sort -Unique) -join "`",`"") + '"'
+}
