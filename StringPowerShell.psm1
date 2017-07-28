@@ -33,3 +33,12 @@ function Convert-HereStringToValidateSet {
     )
     '"' + (($HereString.split("`n") | sort -Unique) -join "`",`"") + '"'
 }
+
+function Remove-WhiteSpace {
+    param (
+        [Parameter(Mandatory,ValueFromPipeline)][String]$String
+    )
+    process {
+        $String.TrimEnd().TrimStart()
+    }
+}
