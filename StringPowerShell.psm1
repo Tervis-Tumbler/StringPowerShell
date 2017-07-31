@@ -42,3 +42,25 @@ function Remove-WhiteSpace {
         $String.TrimEnd().TrimStart()
     }
 }
+
+function Measure-String {
+    param (
+        [Parameter(Mandatory,ValueFromPipeline)][String]$String,
+        [Switch]$Length
+    )
+    process {
+        $Result = [PSCustomObject]@{}
+        if ($Length) { 
+            $Result | Add-Member -MemberType NoteProperty -Name Lenght -Value $String.Length
+        }
+    }
+}
+
+function Get-StringLength {
+    param (
+        [Parameter(Mandatory,ValueFromPipeline)][String]$String
+    )
+    process {
+        $String.Length
+    }
+}
