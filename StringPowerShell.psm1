@@ -64,3 +64,11 @@ function Get-StringLength {
         $String.Length
     }
 }
+
+function Convert-NumberToLetter {
+    param([parameter(Mandatory)]$Number)
+  
+    $Alphabet = @()
+    97..122|foreach-object{$Alphabet+=[char]$_}
+    $Alphabet[$Number]
+}
