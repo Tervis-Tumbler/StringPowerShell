@@ -72,3 +72,17 @@ function Convert-NumberToLetter {
     97..122|foreach-object{$Alphabet+=[char]$_}
     $Alphabet[$Number]
 }
+
+function ConvertFrom-ListOfNames {
+    param (
+        [string]$InputText
+    )
+    $Formatted = $InputText.Split("`n").Trim()
+    $Formatted | foreach {
+        $Name = ($_ -Replace ("\s+",";")).split(";")
+        [PSCustomObject][Ordered]@{
+            GivenName = $Name[0]
+            Surname = $Name[$Name.Count - 1]
+        }
+    }
+}
