@@ -86,3 +86,21 @@ function ConvertFrom-ListOfNames {
         }
     }
 }
+
+function Convert-MacToWindowsNetworkPath {
+    param (
+        [Parameter(ValueFromPipeline)]
+        [string]$MacNetworkPath
+    )
+
+    $MacNetworkPath.Split(":")[1].Replace("/","\")
+}
+
+function Convert-WindowsToMacNetworkPath {
+    param (
+        [Parameter(ValueFromPipeline)]
+        [string]$WindowsNetworkPath
+    )
+
+    "smb:" + $WindowsNetworkPath.Replace("\","/")
+}
