@@ -39,7 +39,7 @@ function Remove-WhiteSpace {
         [Parameter(Mandatory,ValueFromPipeline)][String]$String
     )
     process {
-        $String.TrimEnd().TrimStart()
+        $String -replace "\s", ""
     }
 }
 
